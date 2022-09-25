@@ -12,11 +12,14 @@ export default {
 
         const isBtnDisabled = ref(true);
         const isBtnDisabled2 = ref(false);
+        const autoInc = ref(true);
 
         const { currentColor, colors }  = storeToRefs(AppStore);
 
         setInterval(() => {
-            AppStore.increment();
+            if (autoInc.value) {
+                AppStore.increment();
+            }
         }, 2000);
 
         return {
@@ -24,7 +27,8 @@ export default {
             currentColor,
             colors,
             isBtnDisabled,
-            isBtnDisabled2
+            isBtnDisabled2,
+            autoInc
         }
     },
     components: {
@@ -73,7 +77,7 @@ export default {
                     disabled: {{ isBtnDisabled }}
                 </v-button>
         
-                <input id="checkbox" v-model="isBtnDisabled" style="margin-left: 2rem;" type="checkbox"  />
+                <input id="checkbox" v-model="isBtnDisabled" style="margin-inline: 2rem 0.5rem;" type="checkbox"  />
                 <label for="checkbox">{{ isBtnDisabled }}</label>
             </div>
 
@@ -99,6 +103,12 @@ export default {
                         
                     </button>                    
                 </div>
+                
+                <br class="clearfix">
+                <div>
+                    Auto increment <input id="checkbox3" v-model="autoInc" style="margin-inline: 2rem 0.5rem;" type="checkbox"  />
+                    <label for="checkbox3">{{ autoInc }}</label>
+                </div>
             </div>
 
             <div class="example">
@@ -111,7 +121,7 @@ export default {
                     Pinia color
                 </v-button>
         
-                <input id="checkbox2" v-model="isBtnDisabled2" style="margin-left: 2rem;" type="checkbox"  />
+                <input id="checkbox2" v-model="isBtnDisabled2" style="margin-inline: 2rem 0.5rem;" type="checkbox"  />
                 <label for="checkbox2">{{ isBtnDisabled2 }}</label>
             </div>
         </div>
