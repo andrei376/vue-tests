@@ -33,3 +33,31 @@ a,
     padding: 0 2rem;
   }
 }
+
+body {
+  counter-reset: count-tests;
+}
+.example {
+  counter-increment: count-tests;
+  position: relative;
+  margin-bottom: 2rem;
+  border-width: 1px;
+  border-color: gray;
+  border-style: dashed;
+  padding: 3rem;
+}
+
+.example::before {
+  content: "Example " counter(count-tests) ") ";
+  position: absolute;
+  display: block;
+  top: 0;
+  left: 0;
+  padding: 5px;
+}
+
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
