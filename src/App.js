@@ -1,5 +1,5 @@
 // App.js
-const { ref, reactive } = Vue;
+const { ref } = Vue;
 const { storeToRefs } = Pinia;
 
 import VButton from './VButton.js'
